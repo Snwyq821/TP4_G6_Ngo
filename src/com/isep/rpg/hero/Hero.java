@@ -6,9 +6,9 @@ import java.util.List;
 
 public abstract class Hero
 {
-    int lifePoints;
-    int armor;
-    int weaponDamage;
+    public int lifePoints;
+    public int armor;
+    public int weaponDamage;
 
     List<String> potions;
     List<String> lembas;
