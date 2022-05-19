@@ -6,7 +6,8 @@
 
 package com.isep.rpg;
 
-import com.isep.rpg.hero.Hero;
+import com.isep.rpg.hero.*;
+import com.isep.rpg.enemy.*;
 import com.isep.utils.InputParser;
 
 import java.util.List;
@@ -16,9 +17,11 @@ import java.util.Scanner;
 
 public class Game
 {
-    List<Hero> Heroes;
+    List<Hero> party;
     int playerTurn;
     InputParser inputParser;
+
+    List<Enemy> enemyList;
 
     public void playGame()
     {
@@ -33,9 +36,9 @@ public class Game
     }
 
 
-    // Fonctions
+    // Méthodes pour le fonctionnement de la partie
 
-    void heroesSelection()
+    public void heroesSelection()
     {
         Scanner scanner = new Scanner(System.in);
 
@@ -44,12 +47,48 @@ public class Game
                 "\n Warrior" +
                 "\n Mage" +
                 "\n Healer");
-        scanner.nextLine();
 
+        boolean isPartyCorrect = false;
         do
         {
+            String choice = scanner.nextLine();
+            switch (choice)
+            {
+                case "Hunter":
+                    party.add(new Hunter());
+                case "Warrior":
+                    party.add(new Warrior());
+                case "Mage":
+                    party.add(new Mage());
+                case "Healer":
+                    party.add(new Healer());
+                case "Start":
+                    if (true)
+                    {
+                        System.out.println("Début de la partie !");
+                        isPartyCorrect = true;
+                        break;
+                    }
+                    else
+                    {
+                        System.out.println("Équipe inccorrecte.");
+                    }
+                default :
+                    System.out.println("Équipe incorrecte.");
+            }
+
         }
-        while (false);
+        while (!isPartyCorrect);
+    }
+
+    public void generateEnemies ()
+    {
+        enemyList.add(new Boss());
+    }
+
+    public void winOption ()
+    {
+
     }
 
 }

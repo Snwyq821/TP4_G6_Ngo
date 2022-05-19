@@ -7,8 +7,15 @@ public class Mage extends SpellCaster
     @Override
     public void attack(Enemy enemy) //Fire IV
     {
-        enemy.lifePoints -= weaponDamage;
-        manaPoints -= spellCost;
+        if (manaPoints > spellCost)
+        {
+            enemy.lifePoints -= weaponDamage;
+            manaPoints -= spellCost;
+        }
+        else
+        {
+            System.out.println("Points de mana insuffisants");
+        }
     }
 
     @Override

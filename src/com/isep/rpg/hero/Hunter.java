@@ -1,6 +1,9 @@
 package com.isep.rpg.hero;
 
+import com.isep.rpg.Game;
 import com.isep.rpg.enemy.Enemy;
+
+import java.util.List;
 
 public class Hunter extends Hero
 {
@@ -9,8 +12,12 @@ public class Hunter extends Hero
     @Override
     public void attack(Enemy enemy)
     {
-        enemy.lifePoints -= weaponDamage;
         arrows -= 1;
+        enemy.lifePoints -= weaponDamage;
+        if (enemy.lifePoints <= 0)
+        {
+
+        }
     }
 
 

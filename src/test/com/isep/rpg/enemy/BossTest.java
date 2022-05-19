@@ -1,10 +1,11 @@
 package com.isep.rpg.enemy;
 
+import com.isep.rpg.hero.Hero;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
-import com.isep.rpg.hero.*;
 
-class BasicEnemyTest {
+import static org.junit.jupiter.api.Assertions.*;
+
+class BossTest {
 
     @Test
     void attack(Hero hero) {
