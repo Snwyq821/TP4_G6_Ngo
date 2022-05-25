@@ -10,18 +10,22 @@ import com.isep.rpg.hero.*;
 import com.isep.rpg.enemy.*;
 import com.isep.utils.InputParser;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 
 
 public class Game
 {
-    List<Hero> party;
+    ArrayList<Hero> party = new ArrayList<Hero>();
+    ArrayList<Enemy> enemyList = new ArrayList<Enemy>();
     int playerTurn;
     InputParser inputParser;
 
-    List<Enemy> enemyList;
+
 
     public void playGame()
     {
@@ -55,15 +59,19 @@ public class Game
             switch (choice)
             {
                 case "Hunter":
-                    party.add(new Hunter());
+                    this.party.add(new Hunter());
+                    break;
                 case "Warrior":
-                    party.add(new Warrior());
+                    this.party.add(new Warrior());
+                    break;
                 case "Mage":
-                    party.add(new Mage());
+                    this.party.add(new Mage());
+                    break;
                 case "Healer":
-                    party.add(new Healer());
+                    this.party.add(new Healer());
+                    break;
                 case "Start":
-                    if (true)
+                    if (this.party.size() > 0)
                     {
                         System.out.println("Début de la partie !");
                         isPartyCorrect = true;
@@ -72,18 +80,26 @@ public class Game
                     else
                     {
                         System.out.println("Équipe inccorrecte.");
+                        break;
                     }
                 default :
-                    System.out.println("Équipe incorrecte.");
+                    System.out.println("Saisie incorrecte.");
+                    break;
             }
-
         }
         while (!isPartyCorrect);
     }
 
     public void generateEnemies ()
     {
-        enemyList.add(new Boss());
+        this.enemyList.add(new Boss());
+        Random random = new Random();
+
+        int numberOfBasicEnemies = this.party.size() + random.nextInt(3) - 2;
+        for (int i = 0; i < numberOfBasicEnemies; i++)
+        {
+            this.enemyList.add(new BasicEnemy());
+        }
     }
 
     public void winOption ()
