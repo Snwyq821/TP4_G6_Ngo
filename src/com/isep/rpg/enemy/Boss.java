@@ -4,8 +4,10 @@ import com.isep.rpg.hero.Hero;
 
 public class Boss extends Enemy
 {
-    @Override
-    public void attack(Hero hero) {
-
+    // Construct
+    public Boss()
+    {
+        this.setHp(200000);
+        this.setWeaponDamage(15000);
     }
 }

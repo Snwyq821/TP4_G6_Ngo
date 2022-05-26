@@ -1,17 +1,16 @@
 package com.isep.rpg.enemy;
 
-import com.isep.rpg.hero.Hero;
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
+import com.isep.rpg.hero.*;
 
 class BossTest {
 
-    @Test
     void attack(Hero hero) {
-        BasicEnemy basicEnemy = new BasicEnemy();
-        int HPBeforeTurn = hero.lifePoints;
+        hero.setHp(10000);
+        Boss basicEnemy = new Boss();
+        int HPBeforeTurn = 10000;
         basicEnemy.attack(hero);
-        assertEquals(HPBeforeTurn - basicEnemy.damage, hero.lifePoints);
+        assertEquals(HPBeforeTurn - basicEnemy.getWeaponDamage(), hero.getHp());
     }
 }

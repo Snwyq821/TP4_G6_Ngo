@@ -7,22 +7,13 @@ import com.isep.rpg.hero.Hero;
 
 class HealerTest {
 
-    @Test
-    void heal(Hero hero) {
-        Healer healer = new Healer();
-        int manaBeforeTurn = healer.manaPoints;
-        int HPBeforeTurn = hero.lifePoints;
-        healer.heal(hero);
-        assertEquals(healer.manaPoints - healer.spellCost, healer.manaPoints);
-        assertEquals(HPBeforeTurn + healer.weaponDamage, hero.lifePoints);
-    }
-
     void attack(Enemy enemy) {
+        enemy.setHp(100000);
         Healer healer = new Healer();
-        int manaBeforeTurn = healer.manaPoints;
-        int HPBeforeTurn = enemy.lifePoints;
+        int manaBeforeTurn = healer.getManaPoints();
+        int HPBeforeTurn = 100000;
         healer.attack(enemy);
-        assertEquals(manaBeforeTurn - healer.spellCost, healer.manaPoints);
-        assertEquals(HPBeforeTurn - healer.weaponDamage, enemy.lifePoints);
+        assertEquals(manaBeforeTurn - healer.getSpellCost(), healer.getManaPoints());
+        assertEquals(HPBeforeTurn - healer.getWeaponDamage(), enemy.getHp());
     }
 }

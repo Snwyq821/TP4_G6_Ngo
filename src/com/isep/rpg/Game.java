@@ -23,9 +23,8 @@ public class Game
     ArrayList<Hero> party = new ArrayList<Hero>();
     ArrayList<Enemy> enemyList = new ArrayList<Enemy>();
     int playerTurn;
+    boolean isPlayerTurn = true;
     InputParser inputParser;
-
-
 
     public void playGame()
     {
@@ -87,20 +86,39 @@ public class Game
                     break;
             }
         }
-        while (!isPartyCorrect);
+        while (!isPartyCorrect && this.party.size() >= 4);
     }
 
     public void generateEnemies ()
     {
         this.enemyList.add(new Boss());
-        Random random = new Random();
-
-        int numberOfBasicEnemies = this.party.size() + random.nextInt(3) - 2;
-        for (int i = 0; i < numberOfBasicEnemies; i++)
+        for (int i = 0; i < this.party.size() - 1; i++)
         {
             this.enemyList.add(new BasicEnemy());
         }
     }
+
+    public boolean checkHeroLife(Hero hero)
+    {
+        if (hero.getHp() <= 0)
+        {
+            this.party.remove(hero);
+            return true;
+        }
+        else { return false; }
+    }
+
+    public boolean checkEnemyLife(Enemy hero)
+    {
+        if (hero.getHp() <= 0)
+        {
+            this.enemyList.remove(hero);
+            return true;
+        }
+        else { return false; }
+    }
+
+
 
     public void winOption ()
     {

@@ -4,31 +4,13 @@ import com.isep.rpg.enemy.Enemy;
 
 public class Healer extends SpellCaster
 {
-    public void heal(Hero hero) {
-        if (manaPoints > spellCost)
-        {
-            hero.lifePoints += weaponDamage;
-            manaPoints -= spellCost;
-        }
-        else
-        {
-            System.out.println("Points de mana insuffisants");
-        }
+    // Construct
+    public Healer()
+    {
+        this.setHp(50000);
+        this.setArmor(8000);
+        this.setWeaponDamage(4500);
+        this.setManaPoints(10000);
+        this.setSpellCost(300);
     }
-
-    @Override
-    public void attack(Enemy enemy) {
-
-    }
-
-    @Override
-    public void defend() {
-
-    }
-
-    @Override
-    public void useConsumable(String consumable) {
-
-    }
-
 }

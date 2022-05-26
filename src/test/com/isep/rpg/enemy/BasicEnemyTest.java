@@ -6,11 +6,11 @@ import com.isep.rpg.hero.*;
 
 class BasicEnemyTest {
 
-    @Test
     void attack(Hero hero) {
+        hero.setHp(10000);
         BasicEnemy basicEnemy = new BasicEnemy();
-        int HPBeforeTurn = hero.lifePoints;
+        int HPBeforeTurn = 10000;
         basicEnemy.attack(hero);
-        assertEquals(HPBeforeTurn - basicEnemy.damage, hero.lifePoints);
+        assertEquals(HPBeforeTurn - basicEnemy.getWeaponDamage(), hero.getHp());
     }
 }

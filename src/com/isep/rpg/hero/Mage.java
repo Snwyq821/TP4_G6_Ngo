@@ -4,29 +4,16 @@ import com.isep.rpg.enemy.Enemy;
 
 public class Mage extends SpellCaster
 {
-    @Override
-    public void attack(Enemy enemy) //Fire IV
+
+    // Construct
+    public Mage()
     {
-        if (manaPoints > spellCost)
-        {
-            enemy.lifePoints -= weaponDamage;
-            manaPoints -= spellCost;
-        }
-        else
-        {
-            System.out.println("Points de mana insuffisants");
-        }
+        this.setHp(50000);
+        this.setArmor(500);
+        this.setWeaponDamage(10000);
+        this.setManaPoints(10000);
+        this.setSpellCost(500);
     }
 
-    @Override
-    public void defend()
-    {
 
-    }
-
-    @Override
-    public void useConsumable(String consumable)
-    {
-
-    }
 }

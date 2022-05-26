@@ -1,5 +1,6 @@
 package com.isep.rpg.hero;
 
+import com.isep.rpg.Entity;
 import com.isep.rpg.Game;
 import com.isep.rpg.enemy.Enemy;
 
@@ -9,25 +10,22 @@ public class Hunter extends Hero
 {
     int arrows;
 
-    @Override
+    public int getArrows() { return arrows; }
+
     public void attack(Enemy enemy)
     {
-        arrows -= 1;
-        enemy.lifePoints -= weaponDamage;
-        if (enemy.lifePoints <= 0)
-        {
-
-        }
+        super.attack(enemy);
+        this.arrows -=1;
     }
 
 
-    @Override
-    public void defend() {
-
+    // Constructeur
+    public Hunter()
+    {
+        this.setHp(70000);
+        this.arrows = 20;
+        this.setArmor(1000);
+        this.setWeaponDamage(8000);
     }
 
-    @Override
-    public void useConsumable(String consumable) {
-
-    }
 }

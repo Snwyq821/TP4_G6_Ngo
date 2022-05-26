@@ -1,18 +1,20 @@
 package com.isep.rpg.hero;
 
 import com.isep.rpg.enemy.Boss;
+import com.isep.rpg.enemy.Enemy;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class HunterTest {
 
-    @Test
-    void attack() {
-        Hunter hunter = new Hunter();
-        Boss boss =  new Boss();
-        int arrowsBeforeTurn = hunter.arrows;
-        hunter.attack(boss);
-        assertEquals(hunter.arrows - 1, hunter.arrows);
+    void attack(Enemy enemy) {
+        enemy.setHp(100000);
+        Healer healer = new Healer();
+        int manaBeforeTurn = healer.getArmor();
+        int HPBeforeTurn = 100000;
+        healer.attack(enemy);
+        assertEquals(manaBeforeTurn - healer.getSpellCost(), healer.getManaPoints());
+        assertEquals(HPBeforeTurn - healer.getWeaponDamage(), enemy.getHp());
     }
 }

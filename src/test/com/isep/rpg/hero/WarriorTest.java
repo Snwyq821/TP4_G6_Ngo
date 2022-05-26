@@ -7,10 +7,11 @@ import static org.junit.jupiter.api.Assertions.*;
 class WarriorTest {
 
     void attack(Enemy enemy) {
-        Warrior warrior = new Warrior();
-        int HPBeforeTurn = enemy.lifePoints;
-        warrior.attack(enemy);
-        assertEquals(HPBeforeTurn - warrior.weaponDamage, enemy.lifePoints);
+        enemy.setHp(100000);
+        Warrior healer = new Warrior();
+        int HPBeforeTurn = 100000;
+        healer.attack(enemy);
+        assertEquals(HPBeforeTurn - healer.getWeaponDamage(), enemy.getHp());
     }
 
 }

@@ -1,15 +1,15 @@
 package com.isep.rpg.enemy;
 
+import com.isep.rpg.Entity;
 import com.isep.rpg.hero.Hero;
 
-public abstract class Enemy
+public abstract class Enemy extends Entity
 {
-    public int lifePoints;
-    public int damage;
-
     public void attack(Hero hero)
     {
-        hero.lifePoints -= damage;
+        int damage = getWeaponDamage() - hero.getArmor();
+        hero.substractHp(damage);
     }
+
 
 }

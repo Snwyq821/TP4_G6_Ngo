@@ -1,24 +1,17 @@
 package com.isep.rpg.hero;
 
+import com.isep.rpg.Entity;
 import com.isep.rpg.enemy.Enemy;
 
 public class Warrior extends Hero
 {
-    @Override
-    public void attack(Enemy enemy)
-    {
 
+    // Construct
+    public Warrior()
+    {
+        this.setHp(100000);
+        this.setArmor(1000);
+        this.setWeaponDamage(5500);
     }
 
-    @Override
-    public void defend()
-    {
-
-    }
-
-    @Override
-    public void useConsumable(String consumable)
-    {
-
-    }
 }

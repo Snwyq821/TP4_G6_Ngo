@@ -8,13 +8,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MageTest {
 
-    @Test
     void attack(Enemy enemy) {
-        Mage mage = new Mage();
-        int manaBeforeTurn = mage.manaPoints;
-        int HPBeforeTurn = enemy.lifePoints;
-        mage.attack(enemy);
-        assertEquals(manaBeforeTurn - mage.spellCost, mage.manaPoints);
-        assertEquals(HPBeforeTurn - mage.weaponDamage, enemy.lifePoints);
+        enemy.setHp(100000);
+        Mage healer = new Mage();
+        int manaBeforeTurn = healer.getManaPoints();
+        int HPBeforeTurn = 100000;
+        healer.attack(enemy);
+        assertEquals(manaBeforeTurn - healer.getSpellCost(), healer.getManaPoints());
+        assertEquals(HPBeforeTurn - healer.getWeaponDamage(), enemy.getHp());
     }
 }
